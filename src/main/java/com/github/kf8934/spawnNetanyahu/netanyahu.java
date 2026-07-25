@@ -9,11 +9,12 @@ import org.bukkit.entity.Entity;
 import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Player;
 import org.bukkit.entity.Villager;
+import org.jspecify.annotations.NonNull;
 
 public class netanyahu implements BasicCommand {
 
     @Override
-    public void execute(CommandSourceStack commandSourceStack, String[] args) {
+    public void execute(CommandSourceStack commandSourceStack, String [] args) {
         if (!(commandSourceStack.getExecutor() instanceof Player player)) {
             commandSourceStack.getSender().sendMessage("Fuck you! YOU CANT RUN THIS IF YOU ARE NOT A PLAYER! FUCKING BITCH!");
             return;
@@ -22,9 +23,11 @@ public class netanyahu implements BasicCommand {
         Location location = player.getLocation();
 
         Entity entity = world.spawnEntity(location, EntityType.VILLAGER);
-        Villager villager = (Villager) entity;
+        final Villager yahu = (Villager) entity;
 
-        villager.setProfession(Villager.Profession.NITWIT);
-        villager.customName(Component.text("Benjamin Netanyahu"));
+        yahu.setProfession(Villager.Profession.NITWIT);
+        yahu.customName(Component.text("Benjamin Netanyahu"));
+
+        player.sendRichMessage("<red>YOU HAVE SUMMONED THE BIG YAHU!</red>");
     }
 }
